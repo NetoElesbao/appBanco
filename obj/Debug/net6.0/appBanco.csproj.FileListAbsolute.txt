@@ -1,0 +1,15 @@
+C:\Users\est_jelesbao\appBanco\bin\Debug\net6.0\appBanco.exe
+C:\Users\est_jelesbao\appBanco\bin\Debug\net6.0\appBanco.deps.json
+C:\Users\est_jelesbao\appBanco\bin\Debug\net6.0\appBanco.runtimeconfig.json
+C:\Users\est_jelesbao\appBanco\bin\Debug\net6.0\appBanco.dll
+C:\Users\est_jelesbao\appBanco\bin\Debug\net6.0\appBanco.pdb
+C:\Users\est_jelesbao\appBanco\obj\Debug\net6.0\appBanco.csproj.AssemblyReference.cache
+C:\Users\est_jelesbao\appBanco\obj\Debug\net6.0\appBanco.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\est_jelesbao\appBanco\obj\Debug\net6.0\appBanco.AssemblyInfoInputs.cache
+C:\Users\est_jelesbao\appBanco\obj\Debug\net6.0\appBanco.AssemblyInfo.cs
+C:\Users\est_jelesbao\appBanco\obj\Debug\net6.0\appBanco.csproj.CoreCompileInputs.cache
+C:\Users\est_jelesbao\appBanco\obj\Debug\net6.0\appBanco.dll
+C:\Users\est_jelesbao\appBanco\obj\Debug\net6.0\refint\appBanco.dll
+C:\Users\est_jelesbao\appBanco\obj\Debug\net6.0\appBanco.pdb
+C:\Users\est_jelesbao\appBanco\obj\Debug\net6.0\appBanco.genruntimeconfig.cache
+C:\Users\est_jelesbao\appBanco\obj\Debug\net6.0\ref\appBanco.dll
