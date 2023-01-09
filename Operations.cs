@@ -13,8 +13,22 @@ public static class Operations
             case EnumOptions.Login:
                 Console.WriteLine("Esta opcão é válida!");
                 Console.ReadKey();
-                loginOperation();
-                break;
+                var porta = loginOperation();
+
+                Console.WriteLine("");
+                if (porta != null)
+                {
+                    Console.WriteLine("Login bem sucedido!");
+                    Console.ReadKey();
+                    nextMenuOperation();
+                    goto repeat;
+                }
+                else
+                {
+                    Console.WriteLine("Nenhuma conta condiz com essas informações, tente inserir os dados corretamente!");
+                    Console.ReadKey();
+                    goto repeat;
+                }
             case EnumOptions.Register:
                 Console.WriteLine("Esta opcão é válida!");
                 Console.ReadKey();
@@ -24,6 +38,7 @@ public static class Operations
             case EnumOptions.Exit:
                 Console.WriteLine("Esta opcão é válida!");
                 Console.ReadKey();
+                Console.Clear();
                 break;
             default:
                 Console.WriteLine("Opção inválida!");
@@ -33,7 +48,7 @@ public static class Operations
                 goto repeat;
         }
     }
-    public static void loginOperation()
+    public static Client loginOperation()
     {
         Screens.loginScreen();
         Console.Write("Nome de usuário: ");
@@ -45,26 +60,25 @@ public static class Operations
         //client.registerName(userName);
         client.registerPassword(password);
 
-        var porta = ClientRepository.CustomerList.Where(c => c.UserName == userName && c.Password == password).First();
+        var porta = ClientRepository.CustomerList.Where(c => c.UserName == userName && c.getPassword().Equals(password)).FirstOrDefault();
 
-
-        if (porta != null)
-        {
-            Console.WriteLine("VOCÊ POSSUI REGISTO");
-            Console.ReadKey();
-        }
-        else
-        {
-            Console.WriteLine("VOCÊ NÃO POSSUI REGISTO");
-            Console.ReadKey();
-        }
+        return porta;
+        // if (porta != null)
+        // {
+        //     Console.WriteLine("Login bem sucedido!");
+        //     Console.ReadKey();
+        // }
+        // else
+        // {
+        //     Console.WriteLine("");
+        //     Console.WriteLine("Você não possui uma conta!");
+        //     Console.ReadKey();
+        // }
 
     }
 
     public static void registerOperation()
     {
-
-
         Client client = new Client();
         Screens.registerScreen();
     repeatName:
@@ -100,4 +114,92 @@ public static class Operations
 
     }
 
+    public static void nextMenuOperation()
+    {
+    repeatMenuScreen:
+        Screens.nextMenuScreen();
+        var choiceUser = Convert.ToInt32(Console.ReadLine());
+
+        switch (choiceUser)
+        {
+            case 1:
+            repeat:
+                Screens.accountsMenu();
+                var accountChoice = Console.ReadLine();
+                int.TryParse(accountChoice, out var choice);
+                switch (choice)
+                {
+                    case 1:
+                    repeatPasswordCurrent:
+                        Console.WriteLine();
+                        Console.WriteLine("Para confirmar a criação da conta bancária do tipo corrente, digite novamente a sua senha");
+                        Console.WriteLine("");
+                        Console.Write("Senha: ");
+                        var passwordCurrent = Console.ReadLine();
+
+                        if (ClientRepository.CustomerList.FirstOrDefault(c => c.getPassword().Equals(passwordCurrent)) != null)
+                        {
+                            CurrentAccount contaCorrente = new CurrentAccount();
+                            Console.Clear();
+                            Console.WriteLine("Conta corrente criada com êxito!");
+
+                            var client = ClientRepository.CustomerList.FirstOrDefault(c => c.getPassword().Equals(passwordCurrent));
+                            client.AccountList.Add(contaCorrente);
+
+                            Console.ReadKey();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Senha incorreta por favor tente novante!");
+                            Console.ReadKey();
+                            Console.Clear();
+                            Screens.accountsMenu();
+                            Console.WriteLine(accountChoice);
+                            goto repeatPasswordCurrent;
+                        }
+                        break;
+                    case 2:
+                    repeatPasswordSavings:
+                        Console.WriteLine();
+                        Console.WriteLine("Para confirmar a criação da conta bancária do tipo poupança, digite novamente a sua senha");
+                        Console.WriteLine("");
+                        Console.Write("Senha: ");
+                        var passwordCSavings = Console.ReadLine();
+
+                        if (ClientRepository.CustomerList.FirstOrDefault(c => c.getPassword().Equals(passwordCSavings)) != null)
+                        {
+                            SavingsAccount contaPoupanca = new SavingsAccount();
+                            Console.Clear();
+                            Console.WriteLine("Conta poupança criada com êxito!");
+
+                            var client = ClientRepository.CustomerList.FirstOrDefault(c => c.getPassword().Equals(passwordCSavings));
+                            client.AccountList.Add(contaPoupanca);
+
+                            Console.ReadKey();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Senha incorreta por favor tente novante!");
+                            Console.ReadKey();
+                            Console.Clear();
+                            Screens.accountsMenu();
+                            Console.WriteLine(accountChoice);
+                            goto repeatPasswordSavings;
+                        }
+                        break;
+                    case 3:
+                        goto repeatMenuScreen;
+                    default:
+                        Console.WriteLine("Opção inválida!");
+                        Console.WriteLine("Tente novamente!");
+                        Console.ReadKey();
+                        Console.Clear();
+                        goto repeat;
+                }
+                break;
+            case 2:
+                break;
+        }
+
+    }
 }
