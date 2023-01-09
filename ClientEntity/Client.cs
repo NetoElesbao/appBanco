@@ -1,12 +1,16 @@
+using Accounts.Base;
+
+
+namespace ClientEntity{
 public class Client
 {
     public string UserName { get; set; }
     private string Password { get; set; }
-    public List<AccountBase> AccountList { get; set; }
+    public List<BaseAccount> AccountList { get; set; }
 
     public Client()
     {
-        AccountList = new List<AccountBase>();
+        AccountList = new List<BaseAccount>();
     }
 
     public void registerName(string UserName)
@@ -27,4 +31,5 @@ public class Client
     {
         return this.Password;
     }
+}
 }

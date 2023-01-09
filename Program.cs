@@ -1,12 +1,18 @@
-﻿
-class Program
+﻿using OperationsEntity;
+
+namespace AppBanco
 {
-    static void Main(string[] args)
+    class Program
     {
-        Operations.pickOperation();
-        Console.WriteLine("Você saiu do app!");
+        static void Main(string[] args)
+        {
+            Operations.pickOperation();
+            Console.WriteLine("Você saiu do app!");
+        }
     }
 }
 
 
 
+
+ 
