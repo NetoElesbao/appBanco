@@ -11,8 +11,7 @@ public static class Operations
         switch ((EnumOptions)optionDefault)
         {
             case EnumOptions.Login:
-                Console.WriteLine("Esta opcão é válida!");
-                Console.ReadKey();
+
                 var porta = loginOperation();
 
                 Console.WriteLine("");
@@ -30,14 +29,12 @@ public static class Operations
                     goto repeat;
                 }
             case EnumOptions.Register:
-                Console.WriteLine("Esta opcão é válida!");
-                Console.ReadKey();
+
                 registerOperation();
                 Console.Clear();
                 goto repeat;
             case EnumOptions.Exit:
-                Console.WriteLine("Esta opcão é válida!");
-                Console.ReadKey();
+
                 Console.Clear();
                 break;
             default:
@@ -63,18 +60,6 @@ public static class Operations
         var porta = ClientRepository.CustomerList.Where(c => c.UserName == userName && c.getPassword().Equals(password)).FirstOrDefault();
 
         return porta;
-        // if (porta != null)
-        // {
-        //     Console.WriteLine("Login bem sucedido!");
-        //     Console.ReadKey();
-        // }
-        // else
-        // {
-        //     Console.WriteLine("");
-        //     Console.WriteLine("Você não possui uma conta!");
-        //     Console.ReadKey();
-        // }
-
     }
 
     public static void registerOperation()
@@ -108,10 +93,7 @@ public static class Operations
         client.registerPassword(password);
 
         ClientRepository.AddList(client);
-        Console.Clear();
-        Console.WriteLine("Registrado com sucesso!");
-        Console.ReadKey();
-
+        Screens.menuRegisterScreen();
     }
 
     public static void nextMenuOperation()
@@ -141,8 +123,8 @@ public static class Operations
                         {
                             CurrentAccount contaCorrente = new CurrentAccount();
                             Console.Clear();
+                            Screens.accountsMenuShort();
                             Console.WriteLine("Conta corrente criada com êxito!");
-
                             var client = ClientRepository.CustomerList.FirstOrDefault(c => c.getPassword().Equals(passwordCurrent));
                             client.AccountList.Add(contaCorrente);
 
@@ -170,6 +152,7 @@ public static class Operations
                         {
                             SavingsAccount contaPoupanca = new SavingsAccount();
                             Console.Clear();
+                            Screens.accountsMenuShort();
                             Console.WriteLine("Conta poupança criada com êxito!");
 
                             var client = ClientRepository.CustomerList.FirstOrDefault(c => c.getPassword().Equals(passwordCSavings));

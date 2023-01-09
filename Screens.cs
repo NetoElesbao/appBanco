@@ -49,6 +49,18 @@ public static class Screens
         Console.WriteLine("Minha escolha ");
 
     }
+    public static void accountsMenuShort()
+    {
+
+        Console.WriteLine("------------------------------------------------------------------");
+        Console.WriteLine("                             appBanco                             ");
+        Console.WriteLine("                           MENU DE CONTA                           ");
+        Console.WriteLine("------------------------------------------------------------------");
+        Console.WriteLine("");
+
+    }
+
+
     public static void registerScreen()
     {
         Console.Clear();
@@ -66,5 +78,16 @@ public static class Screens
         Console.WriteLine("                                                                  ");
         Console.WriteLine("------------------------------------------------------------------");
         Console.WriteLine("");
+    }
+    public static void menuRegisterScreen()
+    {
+        Console.Clear();
+        Console.WriteLine("------------------------------------------------------------------");
+        Console.WriteLine("                             appBanco                             ");
+        Console.WriteLine("                          MENU DE REGISTRO                          ");
+        Console.WriteLine("------------------------------------------------------------------");
+        Console.WriteLine("");
+        Console.WriteLine("Registrado com sucesso!!!");
+        Console.ReadKey();
     }
 }
